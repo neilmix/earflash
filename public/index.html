@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#fafaf7">
+  <title>earflash</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="strobe"></canvas>
+  <svg id="toggle" viewBox="0 0 100 100" aria-hidden="true">
+    <path class="play" d="M36 26 L76 50 L36 74 Z" />
+    <g class="pause"><rect x="30" y="26" width="13" height="48" rx="2" /><rect x="57" y="26" width="13" height="48" rx="2" /></g>
+  </svg>
+  <svg id="check" viewBox="0 0 100 100" aria-hidden="true">
+    <circle cx="50" cy="50" r="44" />
+    <path d="M29 52 L44 66 L72 36" />
+  </svg>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
