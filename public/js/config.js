@@ -6,7 +6,7 @@ export const CONFIG = {
 
   match: {
     toleranceCents: 50, // within this = in tune, full green (100 cents = 1 semitone)
-    holdMs: 500, // must stay in tune this long to count
+    holdMs: 300, // must stay in tune this long to count
     dropoutMs: 120, // brief detection gaps tolerated while holding
   },
 
