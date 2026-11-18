@@ -72,7 +72,7 @@ function loop(now) {
   const p = detectPitch(buf, ctx.sampleRate, { minFreq: d.minFreq, maxFreq: d.maxFreq, threshold: d.yinThreshold, minRms: d.minRms });
   const freq = p?.freq ?? null;
   const { cents, matched } = matcher.update(freq, target, now);
-  const failed = !matched && wrong.update(freq, target, now);
+  const failed = !matched && !sequence.rewinding && wrong.update(freq, target, now);
   strobe.draw(cents, rms(buf) * 8, now);
   if (matched) feedback(check, CHECK_FRAMES, CONFIG.checkMs, freq, sequence.matched);
   else if (failed) feedback(fail, FAIL_FRAMES, CONFIG.failMs, freq, sequence.failed);

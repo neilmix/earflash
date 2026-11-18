@@ -23,13 +23,20 @@ test('fail rewinds to previous, then returns to the attempted note', () => {
   assert.equal(s.matched(), 64);
 });
 
-test('fail during rewind retries the previous note', () => {
+test('rewinding is true only while replaying the previous note', () => {
   const s = createSequence(fakeSelector([60, 62, 64]));
   s.start();
-  s.matched();
+  assert.equal(s.rewinding, false);
+  s.failed(); // first note: retry, not a rewind
+  assert.equal(s.rewinding, false);
+  s.matched(); // 62
   s.failed(); // 60
-  assert.equal(s.failed(), 60);
-  assert.equal(s.matched(), 62);
+  assert.equal(s.rewinding, true);
+  s.matched(); // back at 62
+  assert.equal(s.rewinding, false);
+  s.failed();
+  s.start();
+  assert.equal(s.rewinding, false);
 });
 
 test('repeated fails on attempted note rewind each time', () => {
