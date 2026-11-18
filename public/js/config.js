@@ -1,4 +1,6 @@
 // All tunables live here.
+const MATCH_HOLD_MS = 300;
+
 export const CONFIG = {
   // Sounding (concert) MIDI range of Bb clarinet, chalumeau + clarion:
   // written E3..C6 = concert D3 (50) .. Bb5 (82). No altissimo.
@@ -6,8 +8,15 @@ export const CONFIG = {
 
   match: {
     toleranceCents: 50, // within this = in tune, full green (100 cents = 1 semitone)
-    holdMs: 300, // must stay in tune this long to count
+    holdMs: MATCH_HOLD_MS, // must stay in tune this long to count
     dropoutMs: 120, // brief detection gaps tolerated while holding
+  },
+
+  wrong: {
+    minCents: 75, // at least this far from the target (any octave) to count as wrong; the gap above match.toleranceCents keeps out-of-tune notes from counting
+    holdMs: MATCH_HOLD_MS * 2, // wrong pitch must be held this long
+    stableCents: 50, // pitch must stay within this of where it started (slides don't count)
+    dropoutMs: 120,
   },
 
   detection: {
@@ -58,4 +67,5 @@ export const CONFIG = {
   },
 
   checkMs: 700, // check mark fade duration; next note starts after
+  failMs: 400, // fail mark fade duration; previous note replays after
 };
