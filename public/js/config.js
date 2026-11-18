@@ -14,7 +14,7 @@ export const CONFIG = {
 
   wrong: {
     minCents: 75, // at least this far from the target (any octave) to count as wrong; the gap above match.toleranceCents keeps out-of-tune notes from counting
-    holdMs: MATCH_HOLD_MS * 2, // wrong pitch must be held this long
+    holdMs: MATCH_HOLD_MS, // wrong pitch must be held this long (same as a match)
     stableCents: 50, // pitch must stay within this of where it started (slides don't count)
     dropoutMs: 120,
   },

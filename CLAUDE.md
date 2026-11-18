@@ -16,4 +16,4 @@ Static, dependency-free web app (ES modules, no build). Spec summary in README.m
 
 ## Testing
 - `npm test` for logic.
-- Browser: `npm run serve`, then use agent-browser. Before tapping, override `navigator.mediaDevices.getUserMedia` via `eval` to return a `MediaStreamDestination` stream from an oscillator that follows `window.__earflash.target` (a test-only hook). To test a miss, shift the oscillator off target (e.g. +3 semitones) for over 0.6 s. Tap with `agent-browser click body`.
+- Browser: `npm run serve`, then use agent-browser. Before tapping, override `navigator.mediaDevices.getUserMedia` via `eval` to return a `MediaStreamDestination` stream from an oscillator that follows `window.__earflash.target` (a test-only hook). To test a miss, shift the oscillator off target (e.g. +3 semitones) for over 0.3 s. Tap with `agent-browser click body`.
